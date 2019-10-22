@@ -1,0 +1,22 @@
+
+<div class="jumbtron">
+    <h1 class="display-4 text-center"> Login </h1>
+    <input type="hidden" name="UsuarioID" [value]="servico.formData.UsuarioID">
+    <input type="hidden" name="ConfirmarSenha" [value]="servico.formData.ConfirmarSenha">
+    <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="Enviar(form)">
+        <div class="form-group">
+            <label>Nome</label>
+            <input class="form-control" name="Nome" #Nome="ngModel"  [(ngModel)]="servico.formData.Nome" required>
+        </div>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control"  name="Senha" #Senha="ngModel" 
+                [(ngModel)]="servico.formData.Senha" required>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-md-8 offset-md-2">
+                <button type="submit" class="btn btn-lg btn-success" [disabled]="form.invalid">Entrar</button>
+            </div>
+        </div>
+    </form>
+</div>

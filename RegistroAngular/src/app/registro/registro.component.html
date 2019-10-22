@@ -1,0 +1,114 @@
+<h2 style="
+ margin-left: 450px;
+"> Registro</h2>
+<div class="row" style="
+margin-left: 400px;
+">
+  <h4>{{usuario}}</h4>
+  <h4 style="
+    margin-left: 50px;
+">{{data}}</h4>
+</div>
+
+<p id="mensagem"></p>
+<table class="table table-borderless">
+  <thead>
+    <tr>
+
+      <th scope="col"><button class="btn btn-success btn-lg " [disabled]="inicio" (click)="HoraInicio()"> Hora
+          Inicio </button></th>
+      <th scope="col"><button class="btn btn-success btn-lg " [disabled]="saidaAlmoco || !inicio  " (click)="SaidaAlmoco()">
+          Saida Almoço </button></th>
+      <th scope="col"><button class="btn btn-success btn-lg" [disabled]="voltaAlmoco || !inicio || !saidaAlmoco " (click)="VoltaAlmoco()">
+          Volta Almoco </button></th>
+      <th scope="col"><button class="btn btn-success btn-lg " [disabled]="saida || !inicio || !voltaAlmoco" (click)="HoraSaida()"> Hora
+          Saida </button> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td><strong>{{inicio}}</strong> </td>
+      <td><strong>{{saidaAlmoco}} </strong> </td>
+      <td> <strong>{{voltaAlmoco}}</strong> </td>
+      <td> <strong>{{saida}}</strong> </td>
+    </tr>
+
+
+  </tbody> <br />
+
+</table>
+<hr>
+<h3 style="
+margin-top: 50px;margin-left: 450px;
+">Relatório </h3>
+<form form='ngForm' class="mb-4" autocomplete="off" (submit)="Buscar()">
+
+  <table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">
+
+          <div class="row">
+            <label style="
+            margin-left: 15px;
+        "> Data Inicio: </label>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="date" name="dtInicio" #dtInicio="ngModel" [(ngModel)]="DataInicio" class="form-control"
+                  style="
+                margin-left: 20px;
+            ">
+              </div>
+            </div>
+          </div>
+        </th>
+        <th scope="col">
+          <div class="row">
+            <label>Data Termino:</label>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="date" name="dtTermino" #dtTermino="ngModel" [(ngModel)]="DataTermino" class="form-control"
+                  style="
+                margin-left: 20px;">
+              </div>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <h5 style="margin-top: -25px;"> <strong>Usuario: </strong>{{usuario}}</h5>
+        </td>
+        <td><button class="btn btn-success btn-md " style="
+          margin-left: 230px;
+          margin-top: -40px;" type="submit">Buscar </button></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"> Data</th>
+      <th scope="col"> Hora entrada</th>
+      <th scope="col"> Saida Almoço</th>
+      <th scope="col"> Volta Almoço</th>
+      <th scope="col">Hora saida</th>
+      <th scope="col">Horas Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{UsuarioBuscado.dia.replace('00:00:00', '')}} </td>
+      <td>{{UsuarioBuscado.horaInicio}}</td>
+      <td>{{UsuarioBuscado.saidaAlmoco}}</td>
+      <td>{{UsuarioBuscado.voltaAlmoco}}</td>
+      <td>{{UsuarioBuscado.horaSaida}}</td>
+      <td>{{UsuarioBuscado.horasTotal.replace(':00', '')}}</td>
+    </tr>
+  </tbody>
+</table>
